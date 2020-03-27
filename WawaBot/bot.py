@@ -6,7 +6,8 @@ client = Client(account_sid, account_token)
 
 message = client.messages.create(
                             body='Hello There',
-                            from_='whatsapp:+1415523886'
+                            media_url=['https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'],
+                            from_='whatsapp:+1415523886',
                             to='whatsapp:+447708438644'
                         )
 
