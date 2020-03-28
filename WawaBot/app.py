@@ -14,18 +14,23 @@ JOKES = ['A blind man walks into a bar. And a table. And a chair.', 'Why do Dash
         'Why couldn\'t the bicycle stand up by itself? It was two tired.', 'This graveyard looks overcrowded. People must be dying to get in there.', 'What\'s brown and sticky? A stick.', 'A furniture store keeps calling me. All I wanted was one night stand.', 'I thought about going on an all almond diet. But that iss just nuts.', 'Did you hear about the kidnapping at school? It is fine, he woke up.', 'This graveyard looks overcrowded. People must be dying to get in there.',
         'I wouldn\'t buy anything with velcro. It is a total rip off.', 'How does a penguin build its house? Igloos it together.', 'Why did the scarecrow win an award? Because he was outstanding in his field. But hay, it must run in his jeans.']
 
-def wawa_tell_who_reccomendations():
-  reccomendations = """Wash your hands frequently.\n Maintain social distancing.\n Avoid touching eyes, nose and mouth. 
-  \n Practice respiratory hygiene. \n If you have fever, cough and difficulty breathing, seek medical care early. 
-  \n Stay informed and follow advice given by your healthcare provider."""
+def wawa_tell_who_recommendations():
+  recommendations = """Wash your hands frequently.
+Maintain social distancing.
+Avoid touching eyes, nose and mouth. 
+Practice respiratory hygiene.
+If you have fever, cough and difficulty breathing, seek medical care early. 
+Stay informed and follow advice given by your healthcare provider.
 
-  return reccomendations
+For more information: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"""
+
+  return recommendations
 
 def wawa_get_emergency(country):
   with open("countries.txt") as json_file:
     data = json.load(json_file)
   
-  US_list = ["usa", "merica", "us", "united states of america", "america"]
+  US_list = ["usa", "merica", "us", "united states of america", "america", "murica"]
   UK_list = ["scotland", "northern ireland", "wales", "england", "britain", "great britain", "uk"]
   UAE_list = ["uae"]
   
@@ -42,17 +47,20 @@ def wawa_get_emergency(country):
 
 def wawa_tell_welcome():
   #TO DO starting instriuctions
-  message = """Wawa-wee-wa buddy. Welcome to a fun and instructive space, to get the straight facts and fun you need in this strange time.
-  You can ask me a lot of things. \n Ask: latest reccomendations - to see the latest reccomendations by WHO and obtain the URL for myth busters
-  and all the info to keep you safe. \n Ask me to tell you a joke. \n Ask me for a: meme. \n Ask me for an: update [in your country] i.e. update UK.
-  Ask me if you have an emergency for your national emergency number: emergency [country]. \n If you have forgotten the way to ask me for info ask for: instructions:."""
+  message = """Wawa-wee-wa 🤖. Welcome to a *fun* and *instructive* space, to get the straight facts and fun you need in this strange time.
+  
+I am still learning the strange human language, so my vocabulary is still limited. Type ```help``` to see what I understand"""
 
   return message
 
 def wawa_tell_instructions():
-  message = """You can ask me a lot of things. \n Ask: latest reccomendations - to see the latest reccomendations by WHO and obtain the URL for myth busters
-  and all the info to keep you safe. \n Ask me to tell you a joke. \n Ask me for a: meme. \n Ask me for an: update [in your country] i.e. update UK.
-  \n Ask me if you have an emergency for your national emergency number: emergency [country]. \n If you have forgotten the way to ask me for info ask for: instructions:."""
+  message = """Ask me to see the ```latest recommendations``` by the WHO to keep you safe and well informed
+Ask me to tell you a ```joke```
+Ask me for a ```meme```
+Ask me for an ```update [in your country]``` on how the virus is progressing e.g. ```update UK```
+Ask me if you have an emergency for your national emergency number: ```emergency [country]```
+
+To check my vocabulary ask for ```help```"""
 
   return message
 
@@ -190,14 +198,14 @@ def whatsapp_reply():
   elif ("update" in msg.lower()):
     country = msg[7:]
     msg = resp.message(covid_api(country))
-  elif ("instructions" in msg.lower()):
+  elif ("instructions" in msg.lower() or "help" in msg.lower()):
     msg = resp.message(wawa_tell_instructions())
   elif ("emergency" in msg.lower()):
     country = msg[10:]
     print(country)
     msg = resp.message(wawa_get_emergency(country))
-  elif ("who" in msg.lower() or "reccomendations" in msg.lower() or "world health organisation" in msg.lower()):
-    msg = resp.message(wawa_tell_who_reccomendations())
+  elif ("who" in msg.lower() or "recommendations" in msg.lower() or "world health organisation" in msg.lower()):
+    msg = resp.message(wawa_tell_who_recommendations())
   else:
     msg = resp.message("Sorry I did not catch that, ask me for: instructions or emergency:.")
 
