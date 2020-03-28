@@ -58,7 +58,7 @@ def wawa_tell_instructions():
 
 def wawa_tell_joke():
   num_jokes = len(JOKES) - 1
-  chosen_joke_index = random.randint(0, num_jokes)
+  chosen_joke_index = randint(0, num_jokes)
   joke = JOKES[chosen_joke_index]
 
   for i in range(len(joke)):
@@ -179,10 +179,12 @@ def whatsapp_reply():
   if (msg.lower() in greeting_list):
     msg = resp.message(wawa_tell_welcome())
   elif ( "meme" in msg.lower()):
-    msg = resp.message("Here is your meme of the day").media(wawa_get_meme())
-  elif (msg.lower() in joke_list):
-    if random.randint(0,1) == 0:
-      msg = resp.message("Here is your meme of the day").media(wawa_get_meme())
+    image, message = wawa_get_meme()
+    msg = resp.message(message).media(image)
+  elif (any(joke in msg.lower() for joke in joke_list)):
+    if randint(0,1) == 0:
+      image, message = wawa_get_meme()
+      msg = resp.message(message).media(image)
     else:
       msg = resp.message(wawa_tell_joke())
   elif ("update" in msg.lower()):
