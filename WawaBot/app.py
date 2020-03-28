@@ -1,15 +1,9 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
-from PIL import Image
 from bs4 import BeautifulSoup as soup
 import requests
-import io
-import os
-import hashlib
-import csv
 import time
-import requests
-import random
+from random import randint
 import json
 
 app = Flask(__name__)
@@ -126,29 +120,44 @@ def wawa_get_meme():
 
   attrs = {'class': 'thing', 'data-domain': 'i.redd.it'}
 
-  counter = 1
+  counter = 0
+  page_number = 0
 
-  # TODO fix get_image function so that is returns the most relevant image with text as well
-  while (counter <= 30):
+  images = []
+  messages = []
+
+  while (True):
     posts = soup_page.find_all('div', attrs=attrs)
     for post in posts:
-      image = post.find("a", class_="thumbnail")
-      image_page_link = 'http://old.reddit.com' + image.attrs['href'] + '?'
-      image_page = requests.get(image_page_link, headers=headers)
+      # gets the link for the image
+      thumbnail = post.find("a", class_="thumbnail")
+      thumbnail_page_link = 'http://old.reddit.com' + thumbnail.attrs['href'] + '?'
+      image_page = requests.get(thumbnail_page_link, headers=headers)
       image_soup_page = soup(image_page.text, 'html.parser')
-      
       file = image_soup_page.find("img", class_="preview")
       file_link = file.attrs['src']
-      
-      return file_link
+      images.append(file_link)
+
+      # gets the meme message
+      entry = post.find("div", class_="entry")
+      messages.append(entry.div.p.a.text)
 
       counter += 1
 
+      if (counter == 10):
+        index = randint(0, len(images) - 1)
+
+        return images[index], messages[index]
+
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
-    time.sleep(2)
     page = requests.get(next_page_link, headers=headers)
     soup_page = soup(page.text, 'html.parser')
+
+  index = randint(0, len(images) - 1)
+
+  return images[index], messages[index]
+
 
 @app.route("/")
 def home_reply():
@@ -161,7 +170,7 @@ def whatsapp_reply():
   """
   msg = request.form.get('Body')
 
-  #Start out response
+  # Start out response
   resp = MessagingResponse()
 
   greeting_list = ["hey", "good morning", "good evening", "good morrow", "hello", "hi", "what's up", "yo", "sup"]
