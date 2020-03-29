@@ -61,14 +61,14 @@ def myth_busters(message):
 
 def wawa_get_symptoms():
   symptoms = """The most common symptoms are: 
-  Severe Breathing Problems (gasping, turning blue, can't talk normally).
-  Chest Pain (heavy weight around or in chest).
-  Stroke (unbale to raise arm, drooping face or one sided limb weakness).
-  Soar throat.
-  Peristant Coughing.
-  Fever.
-  
-  If you experience any of these symptoms either call your gp or in more sever cases ask me for your ```emergency [country]``` number"""
+😰Severe breathing problems (gasping, turning blue, can't talk normally)
+😖Chest pain (heavy weight around or in chest)
+😵Stroke (unbale to raise arm, drooping face or one sided limb weakness)
+😷Soar throat
+🤧Peristant coughing
+🤒Fever
+
+If you experience any of these symptoms either call your gp or in more sever cases ask me for your ```emergency [country]``` number  🚑"""
 
   return symptoms
 
