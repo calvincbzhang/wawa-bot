@@ -15,12 +15,12 @@ JOKES = ['A blind man walks into a bar. And a table. And a chair.', 'Why do Dash
         'I wouldn\'t buy anything with velcro. It is a total rip off.', 'How does a penguin build its house? Igloos it together.', 'Why did the scarecrow win an award? Because he was outstanding in his field. But hay, it must run in his jeans.']
 
 def wawa_tell_who_recommendations():
-  recommendations = """Wash your hands frequently.
-Maintain social distancing.
-Avoid touching eyes, nose and mouth. 
-Practice respiratory hygiene.
-If you have fever, cough and difficulty breathing, seek medical care early. 
-Stay informed and follow advice given by your healthcare provider.
+  recommendations = """🧼👏Wash your hands frequently.
+🧍↔️🧍Maintain social distancing.
+🚫🤦Avoid touching eyes, nose and mouth. 
+🤧Practice respiratory hygiene.
+😷If you have fever, cough and difficulty breathing, seek medical care early. 
+🧑‍⚕️Stay informed and follow advice given by your healthcare provider.
 
 For more information: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"""
 
@@ -54,11 +54,11 @@ I am still learning the strange human language, so my vocabulary is still limite
   return message
 
 def wawa_tell_instructions():
-  message = """Ask me to see the ```latest recommendations``` by the WHO to keep you safe and well informed
-Ask me to tell you a ```joke```
-Ask me for a ```meme```
-Ask me for an ```update [in your country]``` on how the virus is progressing e.g. ```update UK```
-Ask me if you have an emergency for your national emergency number: ```emergency [country]```
+  message = """📰Ask me to see the ```latest recommendations``` by the WHO to keep you safe and well informed
+😂Ask me to tell you a ```joke```
+🖼️Ask me for a ```meme```
+🆕Ask me for an ```update [in your country]``` on how the virus is progressing e.g. ```update UK```
+🚑Ask me if you have an emergency for your national emergency number: ```emergency [country]```
 
 To check my vocabulary ask for ```help```"""
 
