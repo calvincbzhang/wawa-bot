@@ -14,6 +14,64 @@ JOKES = ['A blind man walks into a bar. And a table. And a chair.', 'Why do Dash
         'Why couldn\'t the bicycle stand up by itself? It was two tired.', 'This graveyard looks overcrowded. People must be dying to get in there.', 'What\'s brown and sticky? A stick.', 'A furniture store keeps calling me. All I wanted was one night stand.', 'I thought about going on an all almond diet. But that iss just nuts.', 'Did you hear about the kidnapping at school? It is fine, he woke up.', 'This graveyard looks overcrowded. People must be dying to get in there.',
         'I wouldn\'t buy anything with velcro. It is a total rip off.', 'How does a penguin build its house? Igloos it together.', 'Why did the scarecrow win an award? Because he was outstanding in his field. But hay, it must run in his jeans.']
 
+MYTHS = ['seasonal', 'hot', 'humid', 'warmer', 'bites', 'mosquitoes', 'mosquito', 'mozzie', 'hand dryers', 'hand dryer',
+        'uv', 'radiation', 'sterilize', 'disinfect', 'disinfection', "thermal scanners", "security check", "detecting",
+        'spraying alcohol', 'spraying chlorine', 'alcohol', 'chlorine', 'pneumonia', 'flu', 'cold', 'youth', 'young', 
+        'children', 'under 50', 'ages', 'sona', 'bath', 'hamam', 'cold', 'snow', 'sanitizer', 'make my own']
+
+def myth_busters(message):
+  hot_seasonal_flu = ['seasonal', 'hot', 'humid', 'warmer']
+  cold_kills_virus = ['cold', 'snow']
+  sauna_bath_kill = ['sona', 'bath', 'hamam']
+  animal_transmit = ['bites', 'mosquitoes', 'mosquito', 'mozzie']
+  hand_dryers = ['hand dryers', 'hand dryer']
+  uv_lamp = ['uv', 'radiation', 'sterilize', 'disinfect', 'disinfection']
+  thermal_scanners = ["thermal scanners", "security check", "detecting"]
+  make_shift_sanitizers = ['spraying alcohol', 'spraying chlorine', 'alcohol', 'chlorine', 'sanitizer', 'make my own']
+  vaccines = ['pneumonia', 'flu', 'cold']
+  young_old_people = ['youth', 'young', 'children', 'under 50', 'ages']
+
+
+  
+  if(any(keywords in message.lower() for keywords in sauna_bath_kill) and 'hot' in message.lower()):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/web-mythbusters/mb-hot-bath.tmb-1920v.png?sfvrsn=f1ebbc_1"
+  elif(any(keywords in message.lower() for keywords in hot_seasonal_flu) and 'virus' in message.lower()):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/52.tmb-1920v.png?sfvrsn=862374e_1"
+  elif(any(keywords in message.lower() for keywords in cold_kills_virus) and 'virus' in message.lower()):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/web-mythbusters/mb-cold-snow.tmb-1920v.png?sfvrsn=1e557ba_1"
+  elif(any(keywords in message.lower() for keywords in animal_transmit)):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/web-mythbusters/mb-mosquito-bite.tmb-1920v.png?sfvrsn=a1d90f6_1"
+  elif(any(keywords in message.lower() for keywords in hand_dryers)):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/web-mythbusters/mythbusters-27.tmb-1920v.png?sfvrsn=d17bc6bb_1"
+  elif(any(keywords in message.lower() for keywords in uv_lamp)):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/mythbusters-31.tmb-1920v.png?sfvrsn=e5989655_1"
+  elif(any(keywords in message.lower() for keywords in thermal_scanners)):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/web-mythbusters/mythbusters-25.tmb-1920v.png?sfvrsn=d3bf829c_2"
+  elif(any(keywords in message.lower() for keywords in make_shift_sanitizers)):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/web-mythbusters/mythbusters-33.tmb-1920v.png?sfvrsn=47bfd0aa_2"
+  elif(any(keywords in message.lower() for keywords in vaccines) and 'vaccine' in vaccines):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/web-mythbusters/11.tmb-1920v.png?sfvrsn=97f2a51e_2"
+  elif('garlic' in message.lower()):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/19.tmb-1920v.png?sfvrsn=52adfc93_3"
+  elif(any(keywords in message.lower() for keywords in young_old_people)):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/mythbuster-2.tmb-1920v.png?sfvrsn=635d24e5_3"
+  elif('antibiotics' in message.lower()):
+    return "https://www.who.int/images/default-source/health-topics/coronavirus/myth-busters/mythbuster-3.tmb-1920v.png?sfvrsn=10657e42_3" 
+
+
+def wawa_get_symptoms():
+  symptoms = """The most common symptoms are: 
+  Severe Breathing Problems (gasping, turning blue, can't talk normally).
+  Chest Pain (heavy weight around or in chest).
+  Stroke (unbale to raise arm, drooping face or one sided limb weakness).
+  Soar throat.
+  Peristant Coughing.
+  Fever.
+  
+  If you experience any of these symptoms either call your gp or in more sever cases ask me for your ```emergency [country]``` number"""
+
+  return symptoms
+
 def wawa_tell_who_recommendations():
   recommendations = """🧼👏Wash your hands frequently.
 🧍↔️🧍Maintain social distancing.
@@ -59,6 +117,8 @@ def wawa_tell_instructions():
 🖼️Ask me for a ```meme```
 🆕Ask me for an ```update [in your country]``` on how the virus is progressing e.g. ```update UK```
 🚑Ask me if you have an emergency for your national emergency number: ```emergency [country]```
+🤧Ask me about common symptoms ```symptoms```
+🦄Ask me about some common myths or things you might be unsure about.
 
 To check my vocabulary ask for ```help```"""
 
@@ -182,32 +242,45 @@ def whatsapp_reply():
   resp = MessagingResponse()
 
   greeting_list = ["hey", "good morning", "good evening", "good morrow", "hello", "hi", "what's up", "yo", "sup"]
-  joke_list = ["bored", "joke", "laugh", "boring"]
+  joke_list = ["bored", "joke", "laugh"]
+  meme = ["meme", "funny picture", "bored", "boring"]
 
-  if (msg.lower() in greeting_list):
+  #Myths
+  if(any(keywords in msg.lower() for keywords in MYTHS)):
+    msg = resp.message("Wawa-wee-wa 🤖. Myth busting activated.").media(myth_busters(msg))
+  #Greetings
+  elif (msg.lower() in greeting_list):
     msg = resp.message(wawa_tell_welcome())
-  elif ( "meme" in msg.lower()):
+  #Meme
+  elif (any(keywords in msg.lower() for keywords in meme)):
     image, message = wawa_get_meme()
     msg = resp.message(message).media(image)
+  #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
-    if randint(0,1) == 0:
-      image, message = wawa_get_meme()
-      msg = resp.message(message).media(image)
-    else:
-      msg = resp.message(wawa_tell_joke())
+    msg = resp.message(wawa_tell_joke())
+  #Update
   elif ("update" in msg.lower()):
     country = msg[7:]
     msg = resp.message(covid_api(country))
+  #Instructions
   elif ("instructions" in msg.lower() or "help" in msg.lower()):
     msg = resp.message(wawa_tell_instructions())
+  #Emergency Number
   elif ("emergency" in msg.lower()):
     country = msg[10:]
     print(country)
     msg = resp.message(wawa_get_emergency(country))
+  #Reccomendations
   elif ("who" in msg.lower() or "recommendations" in msg.lower() or "world health organisation" in msg.lower()):
     msg = resp.message(wawa_tell_who_recommendations())
+  #Symptoms
+  elif('symptoms' in msg.lower() or "unwell" in msg.lower()):
+    msg = resp.message(wawa_get_symptoms())
+  #Default message
   else:
-    msg = resp.message("Sorry I did not catch that, ask me for: instructions or emergency:.")
+    msg = resp.message("""Sorry I did not catch that. Ask me for ```help``` to obtain my vocabulary. 
+
+Or ```emergency [your country]``` if you need it.""")
 
   return str(resp)
 
