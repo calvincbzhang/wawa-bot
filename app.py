@@ -1,10 +1,11 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from twilio.twiml.messaging_response import MessagingResponse
 from bs4 import BeautifulSoup as soup
 import requests
 import time
 from random import randint
 import json
+import os
 
 app = Flask(__name__)
 
@@ -65,7 +66,7 @@ def wawa_get_symptoms():
 😖Chest pain (heavy weight around or in chest)
 😵Stroke (unbale to raise arm, drooping face or one sided limb weakness)
 😷Soar throat
-🤧Peristant coughing
+🤧Persistant coughing
 🤒Fever
 
 If you experience any of these symptoms either call your gp or in more sever cases ask me for your ```emergency [country]``` number  🚑"""
@@ -219,9 +220,9 @@ def wawa_get_meme():
         return images[index], messages[index]
       
       current = int(round(time.time() * 1000))
-      if (current - start > 9000):
+      if (current - start > 12000):
         index = randint(1, 26)
-        return ("./backup_memes" + index + ".jpg", "Here is your meme!")
+        return ('http://d248692c.ngrok.io/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
@@ -232,6 +233,10 @@ def wawa_get_meme():
 
   return images[index], messages[index]
 
+@app.route('/uploads/<filename>', methods=['GET', 'POST'])
+def uploaded_file(filename):
+  return send_from_directory(os.getcwd() + "/backup_memes",
+                              filename)
 
 @app.route("/")
 def home_reply():
