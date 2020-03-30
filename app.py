@@ -177,6 +177,7 @@ def covid_api(country):
   return "Sorry you must have written a wrong country name."
 
 def wawa_get_meme():
+  start = int(round(time.time() * 1000))
   url = "https://old.reddit.com/r/Coronavirus_Meme/"
   # Headers to mimic a browser visit
   headers = {'User-Agent': 'Mozilla/5.0'}
@@ -216,6 +217,10 @@ def wawa_get_meme():
         index = randint(0, len(images) - 1)
 
         return images[index], messages[index]
+      
+      current = int(round(time.time() * 1000))
+      if (current - start > 9000):
+        return ("https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg", "Here is your meme!")
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
