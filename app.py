@@ -1,4 +1,4 @@
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 from bs4 import BeautifulSoup as soup
 import requests
@@ -236,11 +236,11 @@ def wawa_get_meme():
 @app.route('/uploads/<filename>', methods=['GET', 'POST'])
 def uploaded_file(filename):
   return send_from_directory(os.getcwd() + "/backup_memes",
-                              filename)
+                             filename)
 
 @app.route("/")
-def home_reply():
-  return "Hello World"
+def index():
+    return render_template('index.html')
 
 @app.route("/sms", methods=['POST'])
 def whatsapp_reply():

@@ -1,4 +1,5 @@
 twilio.env
 env
-website
+templates
+static
 *.pyc
