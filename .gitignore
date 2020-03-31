@@ -1,5 +1,3 @@
 twilio.env
 env
-templates
-static
 *.pyc

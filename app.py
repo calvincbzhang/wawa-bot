@@ -222,7 +222,7 @@ def wawa_get_meme():
       current = int(round(time.time() * 1000))
       if (current - start > 12000):
         index = randint(1, 26)
-        return ('http://d248692c.ngrok.io/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+        return ('http://74658ca0.ngrok.io/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
