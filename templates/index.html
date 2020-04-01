@@ -9,6 +9,9 @@
   <meta name="author" content="">
 
   <title>WaWa Bot</title>
+  <!-- for FF, Chrome, Opera -->
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/wawa.png') }}" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/wawa.png') }}" sizes="32x32">
 
   <!-- Custom fonts for this theme -->
   <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -32,6 +35,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#mission">Mission</a>
+          </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#steps">Steps</a>
           </li>
@@ -63,58 +69,17 @@
       </div>
 
       <!-- Masthead Subheading -->
-      <p class="masthead-subheading font-weight-light mb-0">Friendly and informative Whatsapp bot for COVID-19</p>
+      <p class="masthead-subheading font-weight-light mb-0">A friendly and informative Whatsapp bot for COVID-19</p>
 
     </div>
   </header>
 
   <!-- Mission Section -->
-  <section class="page-section bg-primary text-white mb-0" id="mission">
+  <section class="page-section portfolio mb-0" id="mission">
     <div class="container">
 
       <!-- Mission Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-white">Mission</h2>
-
-      <!-- Icon Divider -->
-      <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-
-      <!-- About Section Content -->
-      <div class="row">
-         <p class="lead">
-          WaWa is your companion throughout this strange COVID-19 period. He is here to give you a short update on the progression of the virus. 
-          Make you laugh by sending you fresh memes and jokes. Provide you with the latest recommendations by the WHO. Bust those pesky myths. And much more.  &#129327
-          </p>
-        
-        <p class="lead">
-          WaWa learns the human tongue as more users talk to him. And his guides (the developers), are constantly waiting for your input, as WaWa 
-          is hungry to help humans and give his contribution in this temporary period. &#128522
-        </p>          
-      </div>
-
-      <!-- About Section Button -->
-      <div class="text-center mt-4">
-        <!-- Team Image with WaWa-->
-        <img class="img-fluid" src="{{ url_for('static', filename='img/Team.png') }}" alt="">
-      </div>
-      
-
-    </div>
-  </section>
-
-  
-
-  <!-- Steps Section -->
-  <section class="page-section portfolio" id="steps">
-    <div class="container">
-
-      <!-- Steps Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Let's become pals!</h2>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Mission</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -125,25 +90,27 @@
         <div class="divider-custom-line"></div>
       </div>
 
-      <div class="lead text-secondary">
-        <h2 class="text-left text-secondary mb-4">ADD ME</h2>
-        <div class="text-left text-secondary mb-5">
-          Add +1 415 523 8886 to your contacts as "WaWa".
+      <!-- About Section Content -->
+      <div class="row text-justify">
+        <div class="col-lg-4 ml-auto">
+          <p class="lead">
+            WaWa is your companion throughout this strange COVID-19 period. He is here to give you a short update on the progression of the virus. 
+            Make you laugh by sending you fresh memes and jokes. Provide you with the latest recommendations by the WHO. Bust those pesky myths. And much more.  &#129327
+          </p>
         </div>
-        <h2 class="text-left text-secondary mb-1">CONNECT WITH ME</h2>
-        <div class="text-left text-secondary mb-5">
-          Open Whatsapp and send "join magic-army" to WaWa.         
+        <div class="col-lg-4 mr-auto">
+          <p class="lead">
+            WaWa learns the human tongue as more users talk to him. And his guides (the developers), are constantly waiting for your input, as WaWa 
+            is hungry to help humans and give his contribution in this temporary period. &#128522
+          </p>
         </div>
-        <h2 class="text-left text-secondary mb-1">TALK TO ME</h2>
-        <div class="text-left text-secondary mb-5">
-          Say "Hi" to WaWa!
-        </div>
-        <div class="text-left text-secondary mb-5">
-          &#128526 You can now talk with WaWa! 
-          <br></br>
-          WaWa's vocabulary is still limited, but he is constantly learning! It is sometimes challenging for him to understand the human tongue.
-          So send him "help" and he will proudly tell you about what you can ask him. Wawa wants to help you, so let us help him help you: send feedback!
-        </div>
+                  
+      </div>
+
+      <!-- TODO take better picture -->
+      <div class="text-center mt-4">
+        <!-- Team Image with WaWa-->
+        <img class="img-fluid" src="{{ url_for('static', filename='img/Team.png') }}" alt="">
       </div>
       
 
@@ -151,13 +118,12 @@
   </section>
 
   
-
-  <!-- About Section -->
-  <section class="page-section bg-primary text-white mb-0" id="about">
+  <!-- Steps Section -->
+  <section class="page-section bg-primary text-white mb-0" id="steps">
     <div class="container">
 
-      <!-- About Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+      <!-- Steps Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-white mb-0">Let's become pals!</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
@@ -168,8 +134,51 @@
         <div class="divider-custom-line"></div>
       </div>
 
+      <div class="lead">
+        <h2 class="text-center mb-4">ADD ME</h2>
+        <div class="text-center mb-5">
+          Add +1 415 523 8886 to your contacts as "WaWa".
+        </div>
+        <h2 class="text-center mb-1">CONNECT WITH ME</h2>
+        <div class="text-center mb-5">
+          Open Whatsapp and send "join magic-army" to WaWa.         
+        </div>
+        <h2 class="text-center mb-1">TALK TO ME</h2>
+        <div class="text-center mb-5">
+          Say "Hi" to WaWa!
+        </div>
+        <div class="text-center mb-5">
+          <p>&#128526 You can now talk with WaWa! </p>
+          <p>
+            WaWa's vocabulary is still limited, but he is constantly learning! It is sometimes challenging for him to understand the human tongue.
+            So send him "help" and he will proudly tell you about what you can ask him. Wawa wants to help you, so let us help him help you: send feedback!
+          </p>
+        </div>
+      </div>
+      
+
+    </div>
+  </section>
+
+
+  <!-- About Section -->
+  <section class="page-section portfolio mb-0" id="about">
+    <div class="container">
+
+      <!-- About Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary">About</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
       <!-- About Section Content -->
-      <div class="row">
+      <div class="row text-justify">
         <div class="col-lg-4 ml-auto">
           <p class="lead">WaWa Bot is a project created as part of Hack Quarantine by Ivan Dewerpe and Chen Bo Calvin Zhang. It is our contribution to help others.</p>
         </div>
@@ -180,7 +189,7 @@
 
       <!-- About Section Button -->
       <div class="text-center mt-4">
-        <a class="btn btn-xl btn-outline-light" href="https://github.com/zhangchenbocalvin/HackQuarantine">
+        <a class="btn btn-xl btn-outline-primary" href="https://github.com/zhangchenbocalvin/HackQuarantine">
           <i class="fab fa-github mr-2"></i>
           GitHub
         </a>
