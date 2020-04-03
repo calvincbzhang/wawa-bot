@@ -69,7 +69,7 @@ def wawa_get_symptoms():
 🤧Persistant coughing
 🤒Fever
 
-If you experience any of these symptoms either call your gp or in more sever cases ask me for your ```emergency [country]``` number  🚑"""
+If you experience any of these symptoms either call your gp or in more sever cases ask me for your *emergency [country]* number  🚑"""
 
   return symptoms
 
@@ -108,20 +108,20 @@ def wawa_tell_welcome():
   #TO DO starting instriuctions
   message = """Wawa-wee-wa 🤖. Welcome to a *fun* and *instructive* space, to get the straight facts and fun you need in this strange time.
   
-I am still learning the strange human language, so my vocabulary is still limited. Type ```help``` to see what I understand"""
+I am still learning the strange human language, so my vocabulary is still limited. Type *help* to see what I understand"""
 
   return message
 
 def wawa_tell_instructions():
-  message = """📰Ask me to see the ```latest recommendations``` by the WHO to keep you safe and well informed
-😂Ask me to tell you a ```joke```
-🖼️Ask me for a ```meme```
-🆕Ask me for an ```update [in your country]``` on how the virus is progressing e.g. ```update UK```
-🚑Ask me if you have an emergency for your national emergency number: ```emergency [country]```
-🤧Ask me about common symptoms ```symptoms```
+  message = """📰Ask me to see the *latest recommendations* by the WHO to keep you safe and well informed
+😂Ask me to tell you a *joke*
+🖼️Ask me for a *meme*
+🆕Ask me for an *update [in your country]* on how the virus is progressing e.g. *update UK*
+🚑Ask me if you have an emergency for your national emergency number: *emergency [country]*
+🤧Ask me about common symptoms *symptoms*
 🦄Ask me about some common myths or things you might be unsure about.
 
-To check my vocabulary ask for ```help```"""
+To check my vocabulary ask for *help*"""
 
   return message
 
@@ -257,10 +257,10 @@ def whatsapp_reply():
   # Start out response
   resp = MessagingResponse()
 
-  greeting_list = ["hey", "good morning", "good evening", 'g\'day', "good morrow", "hello", "hi", "what's up", "yo", "sup"]
+  greeting_list = ["hey", "good morning", "good evening", 'g\'day', "good morrow", "hello", "hi", "sup"]
   joke_list = ["bored", "joke", "laugh"]
   meme = ["meme", "funny picture", "bored", "boring"]
-  status = ['how are you', 'whats up', 'what\'s up', 'howdy', 'g\'day', 'what\'s new', 'how are you doing', 'how are you coping']
+  status = ['how are you', 'whats up', 'what\'s up', 'howdy', 'what\'s new', 'how are you doing', 'how are you coping']
   sad_response = ['bad', "not well", "stressed", "angry", "sad", "pissed off", "nervous"]
   good_response = ['good', 'awesome', 'great', 'happy', 'relieved']
 
@@ -306,9 +306,9 @@ def whatsapp_reply():
     msg = resp.message(wawa_get_symptoms())
   #Default message
   else:
-    msg = resp.message("""Sorry I did not catch that. Ask me for ```help``` to obtain my vocabulary. 
+    msg = resp.message("""Sorry I did not catch that. Ask me for *help* to obtain my vocabulary. 
 
-Or ```emergency [your country]``` if you need it.""")
+Or *emergency [your country]* if you need it.""")
 
   return str(resp)
 
