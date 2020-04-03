@@ -11,7 +11,7 @@ pip install BeautifulSoup4
 ```
 
 ## Usage
-Check our website [WaWa Bot](wawabot.tech) for the instructions on how to use WaWa Bot.
+Check our website [WaWa Bot](http://www.wawabot.tech/) for the instructions on how to use WaWa Bot.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
