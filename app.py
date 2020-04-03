@@ -239,7 +239,7 @@ def uploaded_file(filename):
                              filename)
 
 @app.route('/upload/<filename>', methods=['GET', 'POST'])
-def uploaded_file(filename):
+def uploaded_file_love(filename):
   return send_from_directory(os.getcwd() + "/static/img/",
                              filename)
 
