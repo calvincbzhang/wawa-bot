@@ -238,6 +238,11 @@ def uploaded_file(filename):
   return send_from_directory(os.getcwd() + "/backup_memes",
                              filename)
 
+@app.route('/upload/<filename>', methods=['GET', 'POST'])
+def uploaded_file(filename):
+  return send_from_directory(os.getcwd() + "/static/img/",
+                             filename)
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -252,16 +257,28 @@ def whatsapp_reply():
   # Start out response
   resp = MessagingResponse()
 
-  greeting_list = ["hey", "good morning", "good evening", "good morrow", "hello", "hi", "what's up", "yo", "sup"]
+  greeting_list = ["hey", "good morning", "good evening", 'g\'day', "good morrow", "hello", "hi", "what's up", "yo", "sup"]
   joke_list = ["bored", "joke", "laugh"]
   meme = ["meme", "funny picture", "bored", "boring"]
+  status = ['how are you', 'whats up', 'what\'s up', 'howdy', 'g\'day', 'what\'s new', 'how are you doing', 'how are you coping']
+  sad_response = ['bad', "not well", "stressed", "angry", "sad", "pissed off", "nervous"]
+  good_response = ['good', 'awesome', 'great', 'happy', 'relieved']
 
   #Myths
   if(any(keywords in msg.lower() for keywords in MYTHS)):
     msg = resp.message("Wawa-wee-wa 🤖. Myth busting activated.").media(myth_busters(msg))
   #Greetings
-  elif (msg.lower() in greeting_list):
+  elif (any(keywords in msg.lower() for keywords in greeting_list)):
     msg = resp.message(wawa_tell_welcome())
+  #Answer
+  elif(any(keywords in msg.lower() for keywords in status)):
+    msg = resp.message("I am good! How are you today?")
+  #Sad response
+  elif(any(keywords in msg.lower() for keywords in sad_response)):
+    msg = resp.message("Aww! It will get better with time. Ask me for a *joke* or *meme*, I want to cheer you up!").media('https://wawaweewabot.herokuapp.com/upload/WawaLove.png')
+  #Good respone
+  elif(any(keywords in msg.lower() for keywords in good_response)):
+    msg = resp.message("Great to hear that!")
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
     image, message = wawa_get_meme()
