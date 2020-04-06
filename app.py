@@ -168,7 +168,7 @@ def covid_api(country):
   while(True):
     if response_json['Countries'][count]['Country'].lower() == country_tolower:
       new_confirmed = response_json['Countries'][count]['NewConfirmed']
-      new_deaths =  response_json['Countries'][count]['TotalDeaths']
+      new_deaths =  response_json['Countries'][count]['NewDeaths']
       new_recovered = response_json['Countries'][count]['NewRecovered']
       total_confirmed = response_json['Countries'][count]['TotalConfirmed']
       return wawa_update_message(new_confirmed, new_deaths, new_recovered, total_confirmed, country)
