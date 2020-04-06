@@ -157,7 +157,7 @@ def covid_api(country):
   UAE_list = ["uae"]
   
   if (country.lower() in US_list):
-    country = "US"
+    country = "United States of America"
   elif (country.lower() in UK_list):
     country = "United Kingdom"
   elif (country.lower() in UAE_list):
