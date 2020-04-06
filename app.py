@@ -196,14 +196,46 @@ def wawa_get_meme():
   images = []
   messages = []
 
+  # check time limit
+  current = int(round(time.time() * 1000))
+  if (current - start > 10000):
+    index = randint(1, 26)
+    return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+
   while (True):
     posts = soup_page.find_all('div', attrs=attrs)
+    # check time limit
+    current = int(round(time.time() * 1000))
+    if (current - start > 10000):
+      index = randint(1, 26)
+      return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+
     for post in posts:
+      # check time limit
+      current = int(round(time.time() * 1000))
+      if (current - start > 10000):
+        index = randint(1, 26)
+        return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+
       # gets the link for the image
       thumbnail = post.find("a", class_="thumbnail")
       thumbnail_page_link = 'http://old.reddit.com' + thumbnail.attrs['href'] + '?'
+
+      # check time limit
+      current = int(round(time.time() * 1000))
+      if (current - start > 10000):
+        index = randint(1, 26)
+        return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+
       image_page = requests.get(thumbnail_page_link, headers=headers)
       image_soup_page = soup(image_page.text, 'html.parser')
+
+      # check time limit
+      current = int(round(time.time() * 1000))
+      if (current - start > 10000):
+        index = randint(1, 26)
+        return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+
       file = image_soup_page.find("img", class_="preview")
       file_link = file.attrs['src']
       images.append(file_link)
@@ -219,8 +251,9 @@ def wawa_get_meme():
 
         return images[index], messages[index]
       
+      # check time limit
       current = int(round(time.time() * 1000))
-      if (current - start > 12000):
+      if (current - start > 10000):
         index = randint(1, 26)
         return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
 
@@ -282,6 +315,9 @@ def whatsapp_reply():
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
     image, message = wawa_get_meme()
+    if (image == "" or message == ""):
+      index = randint(1, 26)
+      image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
     msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
