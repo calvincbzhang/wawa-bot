@@ -196,39 +196,16 @@ def wawa_get_meme():
   images = []
   messages = []
 
-  # check time limit
-  current = int(round(time.time() * 1000))
-  if (current - start > 11000):
-    return ("", "")
-
   while (True):
     posts = soup_page.find_all('div', attrs=attrs)
-    # check time limit
-    current = int(round(time.time() * 1000))
-    if (current - start > 11000):
-      return ("", "")
 
     for post in posts:
-      # check time limit
-      current = int(round(time.time() * 1000))
-      if (current - start > 11000):
-        return ("", "")
 
       # gets the link for the image
       thumbnail = post.find("a", class_="thumbnail")
       thumbnail_page_link = 'http://old.reddit.com' + thumbnail.attrs['href'] + '?'
-
-      # check time limit
-      current = int(round(time.time() * 1000))
-      if (current - start > 11000):
-        return ("", "")
       image_page = requests.get(thumbnail_page_link, headers=headers)
       image_soup_page = soup(image_page.text, 'html.parser')
-
-      # check time limit
-      current = int(round(time.time() * 1000))
-      if (current - start > 11000):
-        return ("", "")
 
       file = image_soup_page.find("img", class_="preview")
       file_link = file.attrs['src']
@@ -247,8 +224,9 @@ def wawa_get_meme():
       
       # check time limit
       current = int(round(time.time() * 1000))
-      if (current - start > 11000):
-        return ("", "")
+      if (current - start > 12000):
+        index = randint(1, 26)
+        return 'http://8b9324d7.ngrok.io/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
@@ -308,9 +286,6 @@ def whatsapp_reply():
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
     image, message = wawa_get_meme()
-    if (image == "" or message == ""):
-      index = randint(1, 26)
-      image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
     msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
