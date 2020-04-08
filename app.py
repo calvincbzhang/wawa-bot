@@ -198,24 +198,21 @@ def wawa_get_meme():
 
   # check time limit
   current = int(round(time.time() * 1000))
-  if (current - start > 10000):
-    index = randint(1, 26)
-    return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+  if (current - start > 11000):
+    return ("", "")
 
   while (True):
     posts = soup_page.find_all('div', attrs=attrs)
     # check time limit
     current = int(round(time.time() * 1000))
-    if (current - start > 10000):
-      index = randint(1, 26)
-      return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+    if (current - start > 11000):
+      return ("", "")
 
     for post in posts:
       # check time limit
       current = int(round(time.time() * 1000))
-      if (current - start > 10000):
-        index = randint(1, 26)
-        return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+      if (current - start > 11000):
+        return ("", "")
 
       # gets the link for the image
       thumbnail = post.find("a", class_="thumbnail")
@@ -223,18 +220,15 @@ def wawa_get_meme():
 
       # check time limit
       current = int(round(time.time() * 1000))
-      if (current - start > 10000):
-        index = randint(1, 26)
-        return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
-
+      if (current - start > 11000):
+        return ("", "")
       image_page = requests.get(thumbnail_page_link, headers=headers)
       image_soup_page = soup(image_page.text, 'html.parser')
 
       # check time limit
       current = int(round(time.time() * 1000))
-      if (current - start > 10000):
-        index = randint(1, 26)
-        return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+      if (current - start > 11000):
+        return ("", "")
 
       file = image_soup_page.find("img", class_="preview")
       file_link = file.attrs['src']
@@ -253,9 +247,8 @@ def wawa_get_meme():
       
       # check time limit
       current = int(round(time.time() * 1000))
-      if (current - start > 10000):
-        index = randint(1, 26)
-        return ('https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!")
+      if (current - start > 11000):
+        return ("", "")
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
