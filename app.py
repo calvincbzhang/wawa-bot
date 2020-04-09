@@ -1,6 +1,7 @@
 from flask import Flask, request, send_from_directory, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 from bs4 import BeautifulSoup as soup
+import urllib
 import requests
 import time
 from random import randint
@@ -221,12 +222,6 @@ def wawa_get_meme():
         index = randint(0, len(images) - 1)
 
         return images[index], messages[index]
-      
-      # check time limit
-      current = int(round(time.time() * 1000))
-      if (current - start > 12000):
-        index = randint(1, 26)
-        return 'http://8b9324d7.ngrok.io/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
@@ -285,8 +280,14 @@ def whatsapp_reply():
     msg = resp.message("Great to hear that!")
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
-    image, message = wawa_get_meme()
-    msg = resp.message(message).media(image)
+    try:
+      image, message = wawa_get_meme()
+    except urllib.error.HTTPError as e:
+      print("caught")
+      index = randint(1, 26)
+      image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
+    finally:
+      msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
     msg = resp.message(wawa_tell_joke())
