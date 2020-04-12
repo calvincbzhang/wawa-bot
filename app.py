@@ -197,39 +197,16 @@ def wawa_get_meme():
   images = []
   messages = []
 
-  # check time limit
-  current = int(round(time.time() * 1000))
-  if (current - start > 11000):
-    return ("", "")
-
   while (True):
     posts = soup_page.find_all('div', attrs=attrs)
-    # check time limit
-    current = int(round(time.time() * 1000))
-    if (current - start > 11000):
-      return ("", "")
 
     for post in posts:
-      # check time limit
-      current = int(round(time.time() * 1000))
-      if (current - start > 11000):
-        return ("", "")
 
       # gets the link for the image
       thumbnail = post.find("a", class_="thumbnail")
       thumbnail_page_link = 'http://old.reddit.com' + thumbnail.attrs['href'] + '?'
-
-      # check time limit
-      current = int(round(time.time() * 1000))
-      if (current - start > 11000):
-        return ("", "")
       image_page = requests.get(thumbnail_page_link, headers=headers)
       image_soup_page = soup(image_page.text, 'html.parser')
-
-      # check time limit
-      current = int(round(time.time() * 1000))
-      if (current - start > 11000):
-        return ("", "")
 
       file = image_soup_page.find("img", class_="preview")
       file_link = file.attrs['src']
@@ -262,7 +239,7 @@ def wawa_get_meme():
 
 @app.route('/uploads/<filename>', methods=['GET', 'POST'])
 def uploaded_file(filename):
-  return send_from_directory(os.getcwd() + "/backup_memes",
+  return send_from_directory(os.getcwd() + "/backup_memes/",
                              filename)
 
 @app.route('/upload/<filename>', methods=['GET', 'POST'])
@@ -303,15 +280,15 @@ def whatsapp_reply():
   #Sad response
   elif(any(keywords in msg.lower() for keywords in sad_response)):
     msg = resp.message("Aww! It will get better with time. Ask me for a *joke* or *meme*, I want to cheer you up!").media('https://wawaweewabot.herokuapp.com/upload/WawaLove.png')
-  #Good respone
+  #Good response
   elif(any(keywords in msg.lower() for keywords in good_response)):
     msg = resp.message("Great to hear that!")
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
-    image, message = wawa_get_meme()
-    if (image == "" or message == ""):
-      index = randint(1, 26)
-      image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
+    # image, message = wawa_get_meme()
+    # if (image == "" or message == ""):
+    index = randint(1, 26)
+    image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
     msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
