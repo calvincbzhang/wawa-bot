@@ -288,7 +288,7 @@ def whatsapp_reply():
     # image, message = wawa_get_meme()
     # if (image == "" or message == ""):
     index = randint(1, 26)
-    image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
+    image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.JPG', "Here is your meme!"
     msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
