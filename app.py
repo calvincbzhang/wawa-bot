@@ -245,14 +245,11 @@ def wawa_get_meme():
         index = randint(0, len(images) - 1)
 
         return images[index], messages[index]
-<<<<<<< HEAD
-=======
       
       # check time limit
       current = int(round(time.time() * 1000))
       if (current - start > 11000):
         return ("", "")
->>>>>>> parent of 9c0c3a2... website fix and revert to old meme retrieval
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
@@ -311,20 +308,10 @@ def whatsapp_reply():
     msg = resp.message("Great to hear that!")
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
-<<<<<<< HEAD
-    # try:
-    #   image, message = wawa_get_meme()
-    # except urllib.error.HTTPError as e:
-    #   print("caught")
-    index = randint(1, 26)
-    image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
-      
-=======
     image, message = wawa_get_meme()
     if (image == "" or message == ""):
       index = randint(1, 26)
       image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
->>>>>>> parent of 9c0c3a2... website fix and revert to old meme retrieval
     msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
