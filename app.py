@@ -280,14 +280,14 @@ def whatsapp_reply():
     msg = resp.message("Great to hear that!")
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
-    try:
-      image, message = wawa_get_meme()
-    except urllib.error.HTTPError as e:
-      print("caught")
-      index = randint(1, 26)
-      image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
-    finally:
-      msg = resp.message(message).media(image)
+    # try:
+    #   image, message = wawa_get_meme()
+    # except urllib.error.HTTPError as e:
+    #   print("caught")
+    index = randint(1, 26)
+    image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
+      
+    msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
     msg = resp.message(wawa_tell_joke())
