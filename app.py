@@ -197,16 +197,39 @@ def wawa_get_meme():
   images = []
   messages = []
 
+  # check time limit
+  current = int(round(time.time() * 1000))
+  if (current - start > 11000):
+    return ("", "")
+
   while (True):
     posts = soup_page.find_all('div', attrs=attrs)
+    # check time limit
+    current = int(round(time.time() * 1000))
+    if (current - start > 11000):
+      return ("", "")
 
     for post in posts:
+      # check time limit
+      current = int(round(time.time() * 1000))
+      if (current - start > 11000):
+        return ("", "")
 
       # gets the link for the image
       thumbnail = post.find("a", class_="thumbnail")
       thumbnail_page_link = 'http://old.reddit.com' + thumbnail.attrs['href'] + '?'
+
+      # check time limit
+      current = int(round(time.time() * 1000))
+      if (current - start > 11000):
+        return ("", "")
       image_page = requests.get(thumbnail_page_link, headers=headers)
       image_soup_page = soup(image_page.text, 'html.parser')
+
+      # check time limit
+      current = int(round(time.time() * 1000))
+      if (current - start > 11000):
+        return ("", "")
 
       file = image_soup_page.find("img", class_="preview")
       file_link = file.attrs['src']
@@ -222,6 +245,14 @@ def wawa_get_meme():
         index = randint(0, len(images) - 1)
 
         return images[index], messages[index]
+<<<<<<< HEAD
+=======
+      
+      # check time limit
+      current = int(round(time.time() * 1000))
+      if (current - start > 11000):
+        return ("", "")
+>>>>>>> parent of 9c0c3a2... website fix and revert to old meme retrieval
 
     next_button = soup_page.find("span", class_="next-button")
     next_page_link = next_button.find("a").attrs['href']
@@ -280,6 +311,7 @@ def whatsapp_reply():
     msg = resp.message("Great to hear that!")
   #Meme
   elif (any(keywords in msg.lower() for keywords in meme)):
+<<<<<<< HEAD
     # try:
     #   image, message = wawa_get_meme()
     # except urllib.error.HTTPError as e:
@@ -287,6 +319,12 @@ def whatsapp_reply():
     index = randint(1, 26)
     image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
       
+=======
+    image, message = wawa_get_meme()
+    if (image == "" or message == ""):
+      index = randint(1, 26)
+      image, message = 'https://wawaweewabot.herokuapp.com/uploads/{}'.format(index) + '.jpg', "Here is your meme!"
+>>>>>>> parent of 9c0c3a2... website fix and revert to old meme retrieval
     msg = resp.message(message).media(image)
   #Joke
   elif (any(joke in msg.lower() for joke in joke_list)):
