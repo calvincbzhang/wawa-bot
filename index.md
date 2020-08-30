@@ -8,6 +8,8 @@ WaWa is your companion throughout this strange COVID-19 period. He is here to gi
 
 WaWa learns the human tongue as more users talk to him. And his guides (the developers), are constantly waiting for your input, as WaWa is hungry to help humans and give his contribution in this temporary period. 😊
 
+![The Team!](Team.png)
+
 ## Let's become pals!
 
 **Add Me**
